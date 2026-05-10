@@ -1,0 +1,16 @@
+/*
+Theme Name: MrKatooni Store
+Theme URI: http://mrkatooni.local/
+Author: MrKatooni
+Description: Custom block theme for MrKatooni WooCommerce store.
+Requires at least: 6.7
+Tested up to: 6.7
+Requires PHP: 8.0
+Version: 0.2.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mrkatooni-store
+Tags: block-patterns, full-site-editing, woocommerce
+*/
+
+/* Base stylesheet is loaded from assets/css/main.css */

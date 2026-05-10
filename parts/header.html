@@ -1,0 +1,50 @@
+<!-- wp:html -->
+<header class="mk-header" dir="rtl">
+  <div class="mk-header__inner">
+    <a class="mk-header__brand" href="/" aria-label="مسترکتونی">
+      <img src="/wp-content/themes/mrkatooni-store/assets/images/logo-header.png" alt="مسترکتونی" />
+    </a>
+
+    <nav class="mk-header__nav" aria-label="منوی اصلی">
+      <ul class="mk-main-menu">
+        <li><a href="/">خانه</a></li>
+        <li class="mk-main-menu__has-submenu">
+          <button class="mk-main-menu__trigger" type="button" aria-expanded="false" aria-controls="mk-desktop-products-submenu">
+            محصولات
+            <i class="hgi hgi-stroke hgi-arrow-down-01" aria-hidden="true"></i>
+          </button>
+          <ul class="mk-main-menu__submenu" id="mk-desktop-products-submenu">
+            <li><a href="/product-category/mens-sneakers/">کتونی مردانه</a></li>
+            <li><a href="/product-category/women-sneakers/">کتونی زنانه</a></li>
+            <li><a href="/product-category/boots/">بوت و نیم بوت</a></li>
+            <li><a href="/product-category/sandals-crocs/">صندل و کراکس</a></li>
+          </ul>
+        </li>
+        <li><a href="/about-us/">درباره ما</a></li>
+        <li><a href="/contact-us/">تماس باما</a></li>
+      </ul>
+    </nav>
+
+    <div class="mk-header__actions">
+      <a class="mk-circle-btn mk-circle-btn--ghost" href="/my-account/" aria-label="ورود / ثبت نام">
+        <i class="hgi hgi-stroke hgi-user-circle" aria-hidden="true"></i>
+      </a>
+
+      <div class="mk-search-shell">
+        <form id="mk-header-search-form" class="mk-header-search" role="search" method="get" action="/">
+          <button class="mk-circle-btn mk-circle-btn--ghost mk-header-search__trigger" type="button" aria-label="جستجو" aria-expanded="false" aria-controls="mk-header-search-input">
+            <i class="hgi hgi-stroke hgi-search-01" aria-hidden="true"></i>
+          </button>
+          <label class="screen-reader-text" for="mk-header-search-input">جستجو</label>
+          <input type="hidden" name="post_type" value="product" />
+          <input id="mk-header-search-input" type="search" name="s" placeholder="جستجو کنید" autocomplete="off" />
+          <button class="mk-header-search__submit" type="submit" aria-label="جستجو">
+            <i class="hgi hgi-stroke hgi-search-01" aria-hidden="true"></i>
+          </button>
+          <button class="mk-header-search__close" type="button" aria-label="بستن جستجو">×</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- /wp:html -->

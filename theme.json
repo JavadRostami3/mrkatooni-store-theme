@@ -1,0 +1,88 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "color": {
+      "palette": [
+        {
+          "slug": "background",
+          "name": "Background",
+          "color": "#fbfbfc"
+        },
+        {
+          "slug": "surface",
+          "name": "Surface",
+          "color": "#ffffff"
+        },
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "#241f21"
+        },
+        {
+          "slug": "brand",
+          "name": "Brand",
+          "color": "#d22129"
+        },
+        {
+          "slug": "accent",
+          "name": "Accent",
+          "color": "#a80f1d"
+        },
+        {
+          "slug": "muted",
+          "name": "Muted",
+          "color": "#72685f"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "1160px",
+      "wideSize": "1320px"
+    },
+    "spacing": {
+      "units": ["px", "rem", "%", "vw", "vh"]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "name": "Kalameh",
+          "slug": "body",
+          "fontFamily": "Kalameh, Tahoma, sans-serif"
+        },
+        {
+          "name": "Kalameh",
+          "slug": "heading",
+          "fontFamily": "Kalameh, Tahoma, sans-serif"
+        }
+      ],
+      "fluid": true
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--background)",
+      "text": "var(--wp--preset--color--ink)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)",
+      "lineHeight": "1.75"
+    },
+    "blocks": {
+      "core/button": {
+        "border": {
+          "radius": "999px"
+        },
+        "spacing": {
+          "padding": {
+            "top": "0.7rem",
+            "right": "1.3rem",
+            "bottom": "0.7rem",
+            "left": "1.3rem"
+          }
+        }
+      }
+    }
+  }
+}

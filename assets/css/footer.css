@@ -1,0 +1,286 @@
+
+/* Sorin Sport Custom Footer */
+.sorin-footer-wrapper {
+  background-color: #F8F3F3;
+  position: relative;
+  overflow: hidden;
+  direction: rtl;
+  font-family: "Kalameh", sans-serif;
+  margin-top: 60px;
+  padding-bottom: 20px;
+}
+
+.sorin-footer-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15vw;
+  font-weight: 900;
+  color: #F1EBEB;
+  white-space: nowrap;
+  z-index: 1;
+  pointer-events: none;
+  font-family: sans-serif;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+.sorin-scroll-top-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  z-index: 3;
+}
+
+.sorin-scroll-top-btn {
+  background-color: #D32F2F;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(211, 47, 47, 0.4);
+  transition: transform 0.3s ease;
+}
+.sorin-scroll-top-btn:hover {
+  transform: translateY(-3px);
+}
+.sorin-scroll-top-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.sorin-footer-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 4% 0;
+}
+
+.sorin-footer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sorin-social-circles {
+  display: flex;
+  gap: 15px;
+}
+
+.sorin-social-circle {
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  transition: transform 0.3s;
+}
+.sorin-social-circle:hover {
+  transform: scale(1.1);
+  color: #D32F2F;
+}
+.sorin-social-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sorin-footer-logo img {
+  height: 60px;
+  object-fit: contain;
+}
+
+.sorin-footer-main-box {
+  background: #fff;
+  border-radius: 40px;
+  padding: 40px 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.sorin-footer-col {
+  flex: 1;
+}
+
+.sorin-footer-col h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sorin-footer-col h4::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #D32F2F;
+  border-radius: 50%;
+}
+
+.sorin-footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sorin-footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.sorin-footer-col ul li a {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+.sorin-footer-col ul li a:hover {
+  color: #D32F2F;
+}
+
+.sorin-contact-info {
+  text-align: left;
+}
+
+.sorin-contact-info h4 {
+  justify-content: flex-end;
+}
+.sorin-contact-info h4::before {
+  order: 1;
+}
+
+.sorin-contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 15px;
+  color: #444;
+  font-size: 14px;
+}
+
+.sorin-contact-icon {
+  color: #D32F2F;
+}
+
+.sorin-social-squares {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.sorin-social-square {
+  width: 45px;
+  height: 45px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.sorin-social-square:hover {
+  background-color: #eee;
+}
+
+.sorin-social-square img {
+  width: 24px;
+  height: 24px;
+}
+
+.sorin-trust-badges {
+  display: flex;
+  gap: 15px;
+}
+
+.sorin-trust-badge {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100px;
+}
+.sorin-trust-badge img {
+  height: 100%;
+  object-fit: contain;
+}
+
+.sorin-footer-copyright {
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  color: #555;
+  font-size: 13px;
+  border-top: 1px solid #f0f0f0;
+}
+
+@media (max-width: 900px) {
+  .sorin-footer-main-box {
+    flex-direction: column;
+    padding: 30px 20px;
+    border-radius: 25px;
+  }
+  
+  .sorin-footer-header {
+    flex-direction: column-reverse;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .sorin-footer-col {
+    text-align: center;
+  }
+  
+  .sorin-footer-col h4 {
+    justify-content: center;
+  }
+  .sorin-footer-col h4::before {
+    order: -1 !important;
+  }
+  
+  .sorin-contact-info {
+    text-align: center;
+    order: -1;
+  }
+  .sorin-contact-item {
+    justify-content: center;
+    flex-direction: row-reverse;
+  }
+  
+  .sorin-social-squares {
+    justify-content: center;
+  }
+  
+  .sorin-trust-badges {
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .sorin-footer-watermark {
+    font-size: 24vw;
+    top: 30%;
+  }
+}
+
