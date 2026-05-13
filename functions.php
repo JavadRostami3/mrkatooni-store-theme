@@ -373,56 +373,16 @@ function mrkatooni_store_relax_generic_product_search(string $search, WP_Query $
 }
 add_filter('posts_search', 'mrkatooni_store_relax_generic_product_search', 10, 2);
 
-function mrkatooni_store_translate_frontend_strings(string $translation, string $text, string $domain): string
+function mrkatooni_store_translate_default_sorting_label(array $options): array
 {
-    if (is_admin()) {
-        return $translation;
+    if (isset($options['menu_order'])) {
+        $options['menu_order'] = 'مرتب سازی پیش فرض';
     }
 
-    $map = [
-        'No products were found matching your selection.' => 'محصولی مطابق جستجوی شما پیدا نشد.',
-        'Search' => 'جستجو',
-        'Shop' => 'فروشگاه',
-        'Default sorting' => 'مرتب سازی پیش فرض',
-        'Showing %1$d&ndash;%2$d of %3$d results' => 'نمایش %1$d تا %2$d از %3$d محصول',
-        'Showing the single result' => 'نمایش تنها محصول',
-    ];
-
-    return $map[$text] ?? $translation;
+    return $options;
 }
-add_filter('gettext', 'mrkatooni_store_translate_frontend_strings', 20, 3);
-
-function mrkatooni_store_translate_frontend_plural_strings(string $translation, string $single, string $plural, int $number, string $domain): string
-{
-    if (is_admin()) {
-        return $translation;
-    }
-
-    if ('Showing all %1$d result' === $single && 'Showing all %1$d results' === $plural) {
-        return 'نمایش همه %1$d محصول';
-    }
-
-    if ('Showing the single result' === $single && 'Showing all %d results' === $plural) {
-        return 1 === $number ? 'نمایش تنها محصول' : 'نمایش همه %d محصول';
-    }
-
-    return $translation;
-}
-add_filter('ngettext', 'mrkatooni_store_translate_frontend_plural_strings', 20, 5);
-
-function mrkatooni_store_translate_frontend_plural_context_strings(string $translation, string $single, string $plural, int $number, string $context, string $domain): string
-{
-    if (is_admin()) {
-        return $translation;
-    }
-
-    if ('with first and last result' === $context && 'Showing %1$d&ndash;%2$d of %3$d result' === $single && 'Showing %1$d&ndash;%2$d of %3$d results' === $plural) {
-        return 'نمایش %1$d تا %2$d از %3$d محصول';
-    }
-
-    return $translation;
-}
-add_filter('ngettext_with_context', 'mrkatooni_store_translate_frontend_plural_context_strings', 20, 6);
+add_filter('woocommerce_catalog_orderby', 'mrkatooni_store_translate_default_sorting_label', 10, 1);
+add_filter('woocommerce_default_catalog_orderby_options', 'mrkatooni_store_translate_default_sorting_label', 10, 1);
 
 function mrkatooni_store_woocommerce_page_title(string $title): string
 {
@@ -433,6 +393,24 @@ function mrkatooni_store_woocommerce_page_title(string $title): string
     return $title;
 }
 add_filter('woocommerce_page_title', 'mrkatooni_store_woocommerce_page_title');
+
+function mrkatooni_store_disable_single_product_search_redirect($enabled): bool
+{
+    // WooCommerce by default redirects search → product page when there is exactly 1 result.
+    // This theme uses a dedicated search results template, so we always keep the search results page.
+    return false;
+}
+add_filter('woocommerce_redirect_single_search_result', 'mrkatooni_store_disable_single_product_search_redirect', 10, 1);
+
+function mrkatooni_store_disable_canonical_redirect_on_search($redirect_url, $requested_url)
+{
+    if (is_search()) {
+        return false;
+    }
+
+    return $redirect_url;
+}
+add_filter('redirect_canonical', 'mrkatooni_store_disable_canonical_redirect_on_search', 10, 2);
 
 function mrkatooni_store_woocommerce_breadcrumb(array $crumbs): array
 {

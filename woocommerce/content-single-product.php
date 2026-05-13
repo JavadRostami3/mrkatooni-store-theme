@@ -63,7 +63,43 @@ $review_count = $product->get_review_count();
 ?>
 
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('mk-single-product'); ?>>
+    <div class="mk-product-wire-head">
+        <nav class="mk-product-wire-breadcrumb" aria-label="مسیر راهنما">
+            <?php
+            $terms = get_the_terms($product->get_id(), 'product_cat');
+            $category = (!empty($terms) && !is_wp_error($terms)) ? $terms[0] : null;
+            ?>
+            <?php if ($category) : ?>
+                <a href="<?php echo esc_url(get_term_link($category)); ?>"><?php echo esc_html($category->name); ?></a><span>/</span>
+            <?php endif; ?>
+            <a href="<?php echo esc_url(home_url('/')); ?>">خانه</a>
+        </nav>
+
+        <h1 class="mk-product-wire-title"><?php echo esc_html($product->get_name()); ?></h1>
+    </div>
+
     <div class="mk-product-hero">
+        <section class="mk-product-gallery" aria-label="گالری محصول">
+            <?php do_action('woocommerce_before_single_product_summary'); ?>
+        </section>
+
+        <section class="mk-product-details" aria-label="اطلاعات محصول">
+            <?php if (!empty($attribute_rows)) : ?>
+                <div class="mk-product-spec-card" aria-label="ویژگی‌های محصول">
+                    <table class="mk-product-spec-table">
+                        <tbody>
+                            <?php foreach ($attribute_rows as $row) : ?>
+                                <tr>
+                                    <th scope="row"><?php echo esc_html($row['label']); ?></th>
+                                    <td><?php echo esc_html($row['value']); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php endif; ?>
+        </section>
+
         <section class="mk-product-purchase" aria-label="خرید محصول">
             <div class="mk-product-purchase__stock">
                 <span class="mk-product-purchase__stock-icon" aria-hidden="true"></span>
@@ -79,48 +115,6 @@ $review_count = $product->get_review_count();
                 <?php woocommerce_template_single_add_to_cart(); ?>
             </div>
         </section>
-
-        <section class="mk-product-details" aria-label="اطلاعات محصول">
-            <?php woocommerce_breadcrumb([
-                'delimiter'   => '<span class="mk-breadcrumb__sep">/</span>',
-                'wrap_before' => '<nav class="mk-breadcrumb woocommerce-breadcrumb" aria-label="مسیر راهنما">',
-                'wrap_after'  => '</nav>',
-                'before'      => '',
-                'after'       => '',
-            ]); ?>
-
-            <?php mrkatooni_store_single_product_brand_label(); ?>
-            <?php woocommerce_template_single_title(); ?>
-
-            <?php if (!empty($attribute_rows)) : ?>
-                <div class="mk-product-spec-card" aria-label="ویژگی‌های محصول">
-                    <table class="mk-product-spec-table">
-                        <tbody>
-                            <?php foreach ($attribute_rows as $row) : ?>
-                                <tr>
-                                    <th scope="row"><?php echo esc_html($row['label']); ?></th>
-                                    <td><?php echo esc_html($row['value']); ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            <?php endif; ?>
-
-            <div class="mk-product-meta-lines">
-                <?php echo wc_get_product_category_list($product->get_id(), '، ', '<div><strong>برچسب:</strong> ', '</div>'); ?>
-                <?php if ($product->get_sku()) : ?>
-                    <div><strong>شناسه کالا</strong> <?php echo esc_html($product->get_sku()); ?></div>
-                <?php endif; ?>
-                <?php if ($product->get_attribute('pa_country') || $product->get_attribute('country')) : ?>
-                    <div><?php echo esc_html($product->get_attribute('pa_country') ?: $product->get_attribute('country')); ?></div>
-                <?php endif; ?>
-            </div>
-        </section>
-
-        <section class="mk-product-gallery" aria-label="گالری محصول">
-            <?php do_action('woocommerce_before_single_product_summary'); ?>
-        </section>
     </div>
 
     <div class="mk-product-after-summary">
@@ -132,7 +126,7 @@ $review_count = $product->get_review_count();
             </div>
 
             <div class="mk-product-tabs__panel is-active" id="mk-tab-description" role="tabpanel" aria-labelledby="mk-tab-description-button">
-                <h2><?php printf(esc_html__('کفش خاص %s', 'mrkatooni-store'), esc_html($product->get_name())); ?></h2>
+                <h2><?php printf(esc_html__('معرفی %s', 'mrkatooni-store'), esc_html($product->get_name())); ?></h2>
                 <div class="mk-product-tabs__content">
                     <?php
                     $description = apply_filters('the_content', get_post_field('post_content', $product->get_id()));
